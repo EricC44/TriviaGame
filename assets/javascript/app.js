@@ -13,11 +13,15 @@ var questions = {
     q5: "When does rift hearld despawn on the map?",
     q6: "What elemental drake regenerates health over time?",
     q7: "How many towers does each team have in each summoners rift game?",
-    q8: "What champion does not have an official solo in the League of Legends music video 'Popstars' by KD/A",
+    q8: "What champion does NOT have an official solo in the League of Legends music video 'Popstars' by KD/A",
     q9: "Which champion is also known as 'The Eternal Nightmare'?",
     q10: "Which NBA team does NOT own a professional League of Legends team?",
     q11: "Which single item is the most expensive in the game?",
     q12: "How many dragons can you have before Elder Dragon spawns?",
+    q13: "As of April 2nd 2019, which champion is considered newest? (excluding reworks)",
+    q14: "Which champions ult is called Shurima Shuffle?",
+    q15: "Who is Riot Games beloved Yordle and mascot?",
+
 
 
 
@@ -40,6 +44,9 @@ var options = {
     q10: ["Houston Rockets" , "Golden State Warriors" , "Los Angeles Lakers" , "Cleveland Caveliers"],
     q11: ["Serrated Dirk" , "Needlessly Large Rod" , "Boots of Speed" , "Ruby Crystal"],
     q12: ["3" , "4" , "5" , "6"],
+    q13: ["Sylas" , "Zoe" , "Neeko" , "Kai'sa"],
+    q14: ["Ziggs" , "Jayce" , "Vi" , "Azir"],
+    q15: ["Ashe" , "Teemo" , "Yasuo" , "Jinx"],
 
 
 
@@ -66,6 +73,9 @@ var answers = {
     q10: "Los Angeles Lakers",
     q11: "Needlessly Large Rod",
     q12: "6",
+    q13: "Sylas",
+    q14: "Azir",
+    q15: "Teemo",
 
 
 
