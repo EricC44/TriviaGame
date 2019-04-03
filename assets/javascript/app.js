@@ -93,16 +93,62 @@ var answers = {
 }   
 
 var startGame = document.getElementById("start").addEventListener("click" , startButton());
-    function startButton() {
-        correctGuess = 0;
-        incorrectGuess = 0;
-        unanswered = 0;
-        currentQuestion = 0;
-        clearInterval(IdTimer);
+function startButton() {
+    correctGuess = 0;
+    incorrectGuess = 0;
+    unanswered = 0;
+    currentQuestion = 0;
+    clearInterval(IdTimer);
+    startTimer = true;
 
-        document.getElementById("start").style.display = 'none';
-
+    function clearResults() {
+    document.getElementById("final-results").innerHTML = '';
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if(!startTimer) {
+        timer = setInterval(count , 1000);
+        startTimer = true;
+    }
+
+}
+
+var timeConverter = (t) => {
+
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+  
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+  
+    if (minutes === 0) {
+      minutes = "00";
+    }
+    else if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+  
+    return minutes + ":" + seconds;
+  };
+
+
+
+
+
+
+
 
 
 
