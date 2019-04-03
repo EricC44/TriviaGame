@@ -1,9 +1,11 @@
 var correctGuess = 0;
 var incorrectGuess = 0;
 var unanswered = 0;
-var timer = 30;
+var currentQuestion = 0;
+var timer;
 var startTimer = true;
 var IdTimer = "";
+
 
 var questions = {
     q1: "Which champion is NOT Demacian?",
@@ -31,7 +33,7 @@ var questions = {
 
 
 }
-var options = {
+var choices = {
     q1: ["Garen", "Fiora" , "Katarina" , "Lux"],
     q2: ["Lucian" , "Rakan" , "Shen" , "Swain"],
     q3: ["Statikk Shiv" , "Quicksilver Sash" , "Adaptive Helm" , "Phantom Dancer"],
@@ -88,5 +90,28 @@ var answers = {
 
 
 
-}    
+}   
+
+var startGame = document.getElementById("start").addEventListener("click" , startButton());
+    function startButton() {
+        correctGuess = 0;
+        incorrectGuess = 0;
+        unanswered = 0;
+        currentQuestion = 0;
+        clearInterval(IdTimer);
+
+        document.getElementById("start").style.display = 'none';
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
