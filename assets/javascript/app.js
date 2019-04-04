@@ -92,7 +92,7 @@ var answers = {
 
 }   
 
-var startGame = document.getElementById("start").addEventListener("click" , startButton());
+var startGame = document.getElementById("start").addEventListener("click" , startGame);
 function startButton() {
     correctGuess = 0;
     incorrectGuess = 0;
@@ -121,7 +121,7 @@ function startButton() {
         timer = setInterval(count , 1000);
         startTimer = true;
     }
-
+    firstQuestion();
 }
 
 var timeConverter = (t) => {
@@ -143,6 +143,28 @@ var timeConverter = (t) => {
     return minutes + ":" + seconds;
   };
 
+  firstQuestion ; function(timer) {
+    timer = document.getElementById("time-left");
+    timer.classList.remove("seconds-left");
+    document.getElementById("time-left").innerText;
+
+
+
+
+
+    if(!startTimer) {
+        timer = setInterval(count , 1000);
+        startTimer = true;
+    }
+
+
+
+
+
+
+
+    
+  }
 
 
 
