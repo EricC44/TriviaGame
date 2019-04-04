@@ -1,3 +1,9 @@
+$(document).ready(function(){
+
+
+
+
+
 var correctGuess = 0;
 var incorrectGuess = 0;
 var unanswered = 0;
@@ -92,7 +98,7 @@ var answers = {
 
 }   
 
-//var startGame = document.getElementById("start").addEventListener("click" , startGame);
+var startGame = document.getElementById("start").addEventListener("click" , startGame);
 function startButton() {
     correctGuess = 0;
     incorrectGuess = 0;
@@ -126,10 +132,10 @@ function startButton() {
 
 
 
-  //firstQuestion ; function(timer : seconds) {
-    timer = document.getElementById("time-left");
-    //timer.classList.remove("seconds-left");
-    //document.getElementById("time-left").innerText = timer
+  var firstQuestion = function(timer) {
+    timer = document.getElementById("time-left").innerText;
+    timer.classList.remove("seconds-left");
+    
 
 
 
@@ -141,21 +147,18 @@ function startButton() {
     }
 
     var questionLeagueOptions = Object.values(questions)[currentQuestion];
-    //document.getElementById("question").innerText;
+    questionLeagueOptions = document.getElementById("question").innerText;
 
     var questionLeagueChoices = Object.values(choices)[currentQuestion];
+    
 
 
-    //choices.array.forEach(function(element) {
-      console.log(element);
-    //});
+    $.each(questionOptions, function(index, key){
+      $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
+    })
 
-
-
-
-
-  //}
-
+    
+  
 
 
 
@@ -163,7 +166,7 @@ function startButton() {
 
 
 
-
+  }
 
 
 
@@ -173,3 +176,11 @@ function startButton() {
 
 
 
+
+
+
+
+
+
+
+});
