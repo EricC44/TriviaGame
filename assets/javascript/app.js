@@ -2,7 +2,7 @@ var correctGuess = 0;
 var incorrectGuess = 0;
 var unanswered = 0;
 var currentQuestion = 0;
-var timer;
+var timerd = 120;
 var startTimer = true;
 var IdTimer = "";
 
@@ -143,9 +143,9 @@ var timeConverter = (t) => {
     return minutes + ":" + seconds;
   };
 
-  firstQuestion ; function(timer) {
-    timer = document.getElementById("time-left");
-    timer.classList.remove("seconds-left");
+  firstQuestion ; function(timerd : seconds) {
+    timerd = document.getElementById("time-left");
+    timerd.classList.remove("seconds-left");
     document.getElementById("time-left").innerText;
 
 
@@ -163,7 +163,7 @@ var timeConverter = (t) => {
 
 
 
-    
+
   }
 
 
