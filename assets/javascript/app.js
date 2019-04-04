@@ -2,7 +2,7 @@ var correctGuess = 0;
 var incorrectGuess = 0;
 var unanswered = 0;
 var currentQuestion = 0;
-var timerd = 120;
+var timer = 120;
 var startTimer = true;
 var IdTimer = "";
 
@@ -92,7 +92,7 @@ var answers = {
 
 }   
 
-var startGame = document.getElementById("start").addEventListener("click" , startGame);
+//var startGame = document.getElementById("start").addEventListener("click" , startGame);
 function startButton() {
     correctGuess = 0;
     incorrectGuess = 0;
@@ -124,29 +124,12 @@ function startButton() {
     firstQuestion();
 }
 
-var timeConverter = (t) => {
 
-    var minutes = Math.floor(t / 60);
-    var seconds = t - (minutes * 60);
-  
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-  
-    if (minutes === 0) {
-      minutes = "00";
-    }
-    else if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-  
-    return minutes + ":" + seconds;
-  };
 
-  firstQuestion ; function(timerd : seconds) {
-    timerd = document.getElementById("time-left");
-    timerd.classList.remove("seconds-left");
-    document.getElementById("time-left").innerText;
+  //firstQuestion ; function(timer : seconds) {
+    timer = document.getElementById("time-left");
+    //timer.classList.remove("seconds-left");
+    //document.getElementById("time-left").innerText = timer
 
 
 
@@ -157,14 +140,21 @@ var timeConverter = (t) => {
         startTimer = true;
     }
 
+    var questionLeagueOptions = Object.values(questions)[currentQuestion];
+    //document.getElementById("question").innerText;
+
+    var questionLeagueChoices = Object.values(choices)[currentQuestion];
+
+
+    //choices.array.forEach(function(element) {
+      console.log(element);
+    //});
 
 
 
 
 
-
-
-  }
+  //}
 
 
 
