@@ -189,7 +189,7 @@ function startButton() {
 
       }
 
-        function hiddenGame() {
+        var hiddenGame = function() {
         document.getElementById("trivia").style.display = "none";
       }
 
