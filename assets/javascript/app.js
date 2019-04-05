@@ -8,7 +8,7 @@ var correctGuess = 0;
 var incorrectGuess = 0;
 var unanswered = 0;
 var currentQuestion = 0;
-var timer = 120;
+var timer = 30;
 var startTimer = true;
 var IdTimer = "";
 
@@ -155,7 +155,39 @@ function startButton() {
 
     $.each(questionOptions, function(index, key){
       $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
+      console.log(index);
     })
+
+
+    var timerRunning = function(){
+
+      if(timer > -1 && currentQuestion < Object.keys(questions).length){
+
+        timer = document.getElementById("timer").innerText;
+        timer --;
+        if(timer === 10){
+          document.createElement("last-10-seconds")
+        }
+      }
+      else if(timer === -1){
+        unanswered++;
+        var finalResult = false;
+        clearInterval(IdTimer);
+        resultId = setTimeout(guessResult , 1000);
+        document.getElementById("final-results").innerHTML;
+        alert("Incorrect, the correct answer was"+ Object.values(answers)[currentQuestion]);
+
+        if(currentQuestion = Object.keys(questions).length) {
+
+          
+
+        }
+
+
+
+      }
+
+    }
 
     
   
