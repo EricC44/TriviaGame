@@ -180,7 +180,12 @@ function startButton() {
       }
       else if(currentQuestion = Object.keys(questions).length) {
 
-          
+        document.getElementById("final-results").innerText;
+        var finalPara = document.createElement("p");
+        var finalText = document.createTextNode("Good job, here are the results!" + "Correct:" + correctGuess + "Incorrect:" + incorrectGuess + "Unanswered:" + unanswered + "Play again?");
+        finalPara.appendChild(finalText);
+        var element = document.getElementById("final-results");
+        element.appendChild(finalPara);  
 
       }
 
