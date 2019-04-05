@@ -189,6 +189,10 @@ function startButton() {
 
       }
 
+        function hiddenGame() {
+        document.getElementById("trivia").style.display = "none";
+      }
+
 
     }
 
