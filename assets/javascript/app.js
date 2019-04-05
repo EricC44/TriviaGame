@@ -1,8 +1,10 @@
+
+//This is to make sure the jQuery doesnt start early.
 $(document).ready(function(){
 
 
 
-
+//Global variables;
 
 var correctGuess = 0;
 var incorrectGuess = 0;
@@ -12,7 +14,7 @@ var timer = 30;
 var startTimer = true;
 var IdTimer = "";
 
-
+//This is the Questions array
 var questions = {
     q1: "Which champion is NOT Demacian?",
     q2: "Which champion is consumed with vengeance against Thresh for holding his wifes soul?",
@@ -39,6 +41,7 @@ var questions = {
 
 
 }
+//This is the choices array
 var choices = {
     q1: ["Garen", "Fiora" , "Katarina" , "Lux"],
     q2: ["Lucian" , "Rakan" , "Shen" , "Swain"],
@@ -67,7 +70,7 @@ var choices = {
 
 
 }
-
+//This is the answers array
 var answers = {
     q1: "Katarina",
     q2: "Lucian",
@@ -97,7 +100,7 @@ var answers = {
 
 
 }   
-
+//This is to listen for a mouse click with the Id "start"
 var startGame = document.getElementById("start").addEventListener("click" , startGame);
 function startButton() {
     correctGuess = 0;
@@ -106,7 +109,7 @@ function startButton() {
     currentQuestion = 0;
     clearInterval(IdTimer);
     startTimer = true;
-
+    //This is to clear my results once you restart the game (working on)
     function clearResults() {
     document.getElementById("final-results").innerHTML = '';
     }
@@ -123,42 +126,39 @@ function startButton() {
 
 
 
-    if(!startTimer) {
-        timer = setInterval(count , 1000);
-        startTimer = true;
-    }
+    
     firstQuestion();
 }
 
 
-
-  var firstQuestion = function(timer) {
+  //This function is suppose to start the first question and timer
+  var firstQuestion = function() {
     timer = document.getElementById("time-left").innerText;
     timer.classList.remove("seconds-left");
-    
+    startTimer = true;
 
 
 
 
-
+    //This is just to make sure that the 
     if(!startTimer) {
         timer = setInterval(count , 1000);
-        startTimer = true;
+        
     }
-
+    //This is hopefully putting the questions into the HTML as well as keeping to the question.
     var questionLeagueOptions = Object.values(questions)[currentQuestion];
     questionLeagueOptions = document.getElementById("question").innerText;
 
     var questionLeagueChoices = Object.values(choices)[currentQuestion];
     
 
-
+    //This is supposed to append a button per possible choice
     $.each(questionOptions, function(index, key){
       $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
       console.log(index);
     })
 
-
+    //This is hopefully the timer and final seconds and decrement
     var timerRunning = function(){
 
       if(timer > -1 && currentQuestion < Object.keys(questions).length){
@@ -177,15 +177,13 @@ function startButton() {
         document.getElementById("final-results").innerHTML;
         alert("Incorrect, the correct answer was"+ Object.values(answers)[currentQuestion]);
 
-        if(currentQuestion = Object.keys(questions).length) {
+      }
+      else if(currentQuestion = Object.keys(questions).length) {
 
           
 
-        }
-
-
-
       }
+
 
     }
 
