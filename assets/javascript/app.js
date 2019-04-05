@@ -102,7 +102,7 @@ var answers = {
 }   
 //This is to listen for a mouse click with the Id "start"
 var startGame = document.getElementById("start").addEventListener("click" , startGame);
-function startButton() {
+ startGame = function startButton() {
     correctGuess = 0;
     incorrectGuess = 0;
     unanswered = 0;
@@ -169,6 +169,7 @@ function startButton() {
           document.createElement("last-10-seconds")
         }
       }
+      //This is if you cannot think of an answer in time.
       else if(timer === -1){
         unanswered++;
         var finalResult = false;
@@ -178,6 +179,7 @@ function startButton() {
         alert("Incorrect, the correct answer was"+ Object.values(answers)[currentQuestion]);
 
       }
+      //This is leading up to the final results and the data behind it.
       else if(currentQuestion = Object.keys(questions).length) {
 
         document.getElementById("final-results").innerText;
@@ -188,23 +190,34 @@ function startButton() {
         element.appendChild(finalPara);  
 
       }
-
+      //This Im trying to hide the game itself and keep the results.
         var hiddenGame = function() {
         document.getElementById("trivia").style.display = "none";
       }
+      //This Im trying to show the start button.
       var showStart = function() {
         document.getElementById("start").style.display = "block";
       }
 
     },
-
+    //This function is to check to see if our guess is correct or not.
     var checkGuess = function() {
 
       var IdResults;
-
+      //This is our answers array
       var currentAnswer = Object.values(answers)[currentQuestion];
+      //This is whenever you guess correctly on the function.
+      if(currentAnswer.text === correctGuess) {
+        this.classList.add("btn-success");
+        this.classList.remove("btn-default");
+        correctGuess++;
+        clearInterval(IdTimer);
+        IdResults = setTimeout(guessResult, 1000);
+        var R = document.createElement("h3");
+        var A = document.createTextNode("Correct Guess!");
+        R.appendChild(A);
 
-      if(currentAnswer.text === correctGuess
+      }
     }
 
     
