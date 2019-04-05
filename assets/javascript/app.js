@@ -192,8 +192,19 @@ function startButton() {
         var hiddenGame = function() {
         document.getElementById("trivia").style.display = "none";
       }
+      var showStart = function() {
+        document.getElementById("start").style.display = "block";
+      }
 
+    },
 
+    var checkGuess = function() {
+
+      var IdResults;
+
+      var currentAnswer = Object.values(answers)[currentQuestion];
+
+      if(currentAnswer.text === correctGuess
     }
 
     
