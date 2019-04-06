@@ -116,10 +116,16 @@ var answers = {
     startTimer = true;
    
     if(startTimer = true) {
+    
+    }
+
+    document.getElementById("trivia").style.display = "block";
+    timer = document.getElementById("timer").innerText;
+    document.getElementById("start").style.display = "none";
+    document.getElementById("time-left").style.display = "block";
     firstQuestion();
     clearResults();
     timerRunning();
-    }
   }
 //This is to clear my results once you restart the game (working on)
   function clearResults() {
@@ -145,7 +151,7 @@ var answers = {
     //This is hopefully putting the questions into the HTML as well as keeping to the question.
     var questionLeagueOptions;
      questionLeagueOptions = Object.values(questions)[currentQuestion];
-    questionLeagueOptions = document.getElementById("question").innerText;
+    questionLeagueOptions = document.getElementById("question").innerHTML;
 
     var questionLeagueChoices = Object.values(choices)[currentQuestion];
     checkGuess(questionLeagueChoices);
@@ -154,7 +160,7 @@ var answers = {
     //This is supposed to append a button per possible choice
     $.each(questionLeagueChoices, function(index, key){
       $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
-      console.log(index);
+      console.log(questionLeagueChoices , index);
     })
 
   }
