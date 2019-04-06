@@ -113,7 +113,7 @@ var startGame = document.getElementById("start").addEventListener("click" , star
     function clearResults() {
     document.getElementById("final-results").innerHTML = '';
     }
-
+    timerRunning();
 
 
 
@@ -146,14 +146,15 @@ var startGame = document.getElementById("start").addEventListener("click" , star
         
     }
     //This is hopefully putting the questions into the HTML as well as keeping to the question.
-    var questionLeagueOptions = Object.values(questions)[currentQuestion];
+    var questionLeagueOptions;
+     questionLeagueOptions = Object.values(questions)[currentQuestion];
     questionLeagueOptions = document.getElementById("question").innerText;
 
     var questionLeagueChoices = Object.values(choices)[currentQuestion];
     
 
     //This is supposed to append a button per possible choice
-    $.each(questionOptions, function(index, key){
+    $.each(questionLeagueOptions, function(index, key){
       $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
       console.log(index);
     })
@@ -198,12 +199,13 @@ var startGame = document.getElementById("start").addEventListener("click" , star
       var showStart = function() {
         document.getElementById("start").style.display = "block";
       }
+      
 
-    },
+    }
     //This function is to check to see if our guess is correct or not.
-    var checkGuess = function() {
+    function checkGuess() {
 
-      var IdResults;
+      var IdResults = setTimeout(guessResult, 1000);
       //This is our answers array
       var currentAnswer = Object.values(answers)[currentQuestion];
       //This is whenever you guess correctly on the function.
@@ -217,9 +219,22 @@ var startGame = document.getElementById("start").addEventListener("click" , star
         var A = document.createTextNode("Correct Guess!");
         R.appendChild(A);
 
+      } else{
+
+        this.classList.add("btn-danger");
+        this.classList.remove("btn-default");
+        incorrectGuess++;
+        clearInterval(IdTimer);
+        IdResults = setTimeout(guessResult, 1000);
+        var R = document.createElement("h3");
+        var A = document.createTextNode("Wrong! Correct answer is " + currentAnswer);
+        R.appendChild(A);
       }
     }
+    function theResults() {
 
+      currentQuestion++;
+    }
     
   
 
