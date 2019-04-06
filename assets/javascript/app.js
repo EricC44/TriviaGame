@@ -18,6 +18,7 @@ var timer = 30;
 var startTimer = true;
 var IdTimer = "";
 
+
 //This is the Questions array
 var questions = {
     q1: "Which champion is NOT Demacian?",
@@ -116,16 +117,23 @@ var answers = {
     startTimer = true;
    
     if(startTimer = true) {
-    
+    timerRunning();
     }
 
-    document.getElementById("trivia").style.display = "block";
+    displayTrivia();
     timer = document.getElementById("timer").innerText;
-    document.getElementById("start").style.display = "none";
+    hideStart();
     document.getElementById("time-left").style.display = "block";
     firstQuestion();
     clearResults();
     timerRunning();
+  }
+
+  function hideStart() {
+    document.getElementById("start").style.display = "none";
+  }
+  function displayTrivia() {
+    document.getElementById("trivia").style.display = "block";
   }
 //This is to clear my results once you restart the game (working on)
   function clearResults() {
@@ -137,6 +145,7 @@ var answers = {
   //This function is suppose to start the first question and timer
   function firstQuestion() {
     timer = document.getElementById("time-left").innerText;
+    document.getElementById("time-left").style.display = "block";
     
     
 
@@ -152,6 +161,7 @@ var answers = {
     var questionLeagueOptions;
      questionLeagueOptions = Object.values(questions)[currentQuestion];
     questionLeagueOptions = document.getElementById("question").innerHTML;
+    
 
     var questionLeagueChoices = Object.values(choices)[currentQuestion];
     checkGuess(questionLeagueChoices);
@@ -160,7 +170,8 @@ var answers = {
     //This is supposed to append a button per possible choice
     $.each(questionLeagueChoices, function(index, key){
       $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
-      console.log(questionLeagueChoices , index);
+      console.log(questionLeagueChoices);
+      
     })
 
   }
