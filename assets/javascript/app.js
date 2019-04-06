@@ -115,10 +115,11 @@ var answers = {
     clearInterval(IdTimer);
     startTimer = true;
    
-    
+    if(startTimer = true) {
     firstQuestion();
     clearResults();
     timerRunning();
+    }
   }
 //This is to clear my results once you restart the game (working on)
   function clearResults() {
@@ -146,12 +147,12 @@ var answers = {
      questionLeagueOptions = Object.values(questions)[currentQuestion];
     questionLeagueOptions = document.getElementById("question").innerText;
 
-    var questionLeagueChoices = Object.values(choices[currentQuestion]);
+    var questionLeagueChoices = Object.values(choices)[currentQuestion];
     checkGuess(questionLeagueChoices);
     
 
     //This is supposed to append a button per possible choice
-    $.each(questionLeagueOptions, function(index, key){
+    $.each(questionLeagueChoices, function(index, key){
       $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
       console.log(index);
     })
@@ -173,7 +174,7 @@ var answers = {
       unanswered++;
       var finalResult = false;
       clearInterval(IdTimer);
-      resultId = setTimeout(guessResult , 1000);
+      resultId = setTimeout(theResults() , 1000);
       document.getElementById("final-results").innerHTML;
       alert("Incorrect, the correct answer was"+ Object.values(answers)[currentQuestion]);
 
@@ -205,35 +206,35 @@ var answers = {
   //This function is to check to see if our guess is correct or not.
   function checkGuess() {
 
-    IdResults = setTimeout(guessResult, 1000);
+    IdResults = setTimeout(theResults, 1000);
     //This is our answers array
     var currentAnswer = Object.values(answers)[currentQuestion];
     
     //This is whenever you guess correctly on the function.
-    if(currentAnswer.text === correctGuess) {
-      this.classList.add("btn-success");
-      this.classList.remove("btn-default");
+    if(currentAnswer === correctGuess) {
+      //this.classList.add("btn-success");
+      //this.classList.remove("btn-default");
       correctGuess++;
       clearInterval(IdTimer);
-      IdResults = setTimeout(guessResult, 1000);
+      IdResults = setTimeout(theResults, 1000);
       var R = document.createElement("h3");
       var A = document.createTextNode("Correct Guess!");
       R.appendChild(A);
 
     } else {
 
-      this.classList.add("btn-danger");
-      this.classList.remove("btn-default");
+      //this.classList.add("btn-danger");
+      //this.classList.remove("btn-default");
       incorrectGuess++;
       clearInterval(IdTimer);
-      IdResults = setTimeout(guessResult, 1000);
+      IdResults = setTimeout(theResults, 1000);
       var R = document.createElement("h3");
       var A = document.createTextNode("Wrong! Correct answer is " + currentAnswer);
       R.appendChild(A);
     }
   }
   function theResults() {
-
+    
     currentQuestion++;
     document.getElementById("choices").style.display = "none";
     document.getElementById("final-results").style.display = "none";
