@@ -2,7 +2,12 @@
 //This is to make sure the jQuery doesnt start early.
 $(document).ready(function(){
 
- 
+document.getElementById("time-left").style.display = "none";
+//This is to listen for a mouse click with the Id "start"
+var startGame = document.getElementById("start").addEventListener("click" , startGame);
+
+//document.addEventListener("click" , currentAnswer);
+
 //Global variables;
 
 var correctGuess = 0;
@@ -100,9 +105,8 @@ var answers = {
 
 } 
 
-document.getElementById("time-left").style.display = "none";
-//This is to listen for a mouse click with the Id "start"
-  var startGame = document.getElementById("start").addEventListener("click" , startGame);
+
+
   function startGame() {
     correctGuess = 0;
     incorrectGuess = 0;
@@ -126,7 +130,7 @@ document.getElementById("time-left").style.display = "none";
   //This function is suppose to start the first question and timer
   function firstQuestion() {
     timer = document.getElementById("time-left").innerText;
-    timer.classList.remove("seconds-left");
+    
     
 
 
@@ -142,7 +146,7 @@ document.getElementById("time-left").style.display = "none";
      questionLeagueOptions = Object.values(questions)[currentQuestion];
     questionLeagueOptions = document.getElementById("question").innerText;
 
-    var questionLeagueChoices = Object.values(choices)[currentQuestion];
+    var questionLeagueChoices = Object.values(choices[currentQuestion]);
     checkGuess(questionLeagueChoices);
     
 
@@ -151,65 +155,6 @@ document.getElementById("time-left").style.display = "none";
       $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
       console.log(index);
     })
-
-    //This is hopefully the timer and final seconds and decrement
-    
-    //This Im trying to hide the game itself and keep the results.
-    function hiddenGame() {
-      document.getElementById("trivia").style.display = "none";
-    }
-    //This Im trying to show the start button.
-    function showStart() {
-      document.getElementById("start").style.display = "block";
-    }
-    
-    //This function is to check to see if our guess is correct or not.
-    function checkGuess() {
-
-      IdResults = setTimeout(guessResult, 1000);
-      //This is our answers array
-      var currentAnswer = Object.values(answers)[currentQuestion];
-      
-      //This is whenever you guess correctly on the function.
-      if(currentAnswer.text === correctGuess) {
-        this.classList.add("btn-success");
-        this.classList.remove("btn-default");
-        correctGuess++;
-        clearInterval(IdTimer);
-        IdResults = setTimeout(guessResult, 1000);
-        var R = document.createElement("h3");
-        var A = document.createTextNode("Correct Guess!");
-        R.appendChild(A);
-
-      } else {
-
-        this.classList.add("btn-danger");
-        this.classList.remove("btn-default");
-        incorrectGuess++;
-        clearInterval(IdTimer);
-        IdResults = setTimeout(guessResult, 1000);
-        var R = document.createElement("h3");
-        var A = document.createTextNode("Wrong! Correct answer is " + currentAnswer);
-        R.appendChild(A);
-      }
-    }
-    function theResults() {
-
-      currentQuestion++;
-      document.getElementById("choices").style.display = "none";
-      document.getElementById("final-results").style.display = "none";
-
-      firstQuestion();
-
-    }
-    
-  
-
-
-
-
-
-
 
   }
   //This is hopefully the timer and final seconds and decrement
@@ -247,6 +192,54 @@ document.getElementById("time-left").style.display = "none";
 
     }
     
+
+  }
+  //This Im trying to hide the game itself and keep the results.
+  function hiddenGame() {
+    document.getElementById("trivia").style.display = "none";
+  }
+  //This Im trying to show the start button.
+  function showStart() {
+    document.getElementById("start").style.display = "block";
+  }
+  //This function is to check to see if our guess is correct or not.
+  function checkGuess() {
+
+    IdResults = setTimeout(guessResult, 1000);
+    //This is our answers array
+    var currentAnswer = Object.values(answers)[currentQuestion];
+    
+    //This is whenever you guess correctly on the function.
+    if(currentAnswer.text === correctGuess) {
+      this.classList.add("btn-success");
+      this.classList.remove("btn-default");
+      correctGuess++;
+      clearInterval(IdTimer);
+      IdResults = setTimeout(guessResult, 1000);
+      var R = document.createElement("h3");
+      var A = document.createTextNode("Correct Guess!");
+      R.appendChild(A);
+
+    } else {
+
+      this.classList.add("btn-danger");
+      this.classList.remove("btn-default");
+      incorrectGuess++;
+      clearInterval(IdTimer);
+      IdResults = setTimeout(guessResult, 1000);
+      var R = document.createElement("h3");
+      var A = document.createTextNode("Wrong! Correct answer is " + currentAnswer);
+      R.appendChild(A);
+    }
+  }
+  function theResults() {
+
+    currentQuestion++;
+    document.getElementById("choices").style.display = "none";
+    document.getElementById("final-results").style.display = "none";
+
+    firstQuestion();
+    showStart();
 
   }
 
