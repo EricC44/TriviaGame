@@ -3,7 +3,7 @@
 $(document).ready(function(){
 
 
-
+ 
 //Global variables;
 
 var correctGuess = 0;
@@ -102,40 +102,31 @@ var answers = {
 }   
 //This is to listen for a mouse click with the Id "start"
 var startGame = document.getElementById("start").addEventListener("click" , startGame);
- startGame = function startButton() {
+ function startButton() {
     correctGuess = 0;
     incorrectGuess = 0;
     unanswered = 0;
     currentQuestion = 0;
     clearInterval(IdTimer);
     startTimer = true;
-    //This is to clear my results once you restart the game (working on)
-    function clearResults() {
-    document.getElementById("final-results").innerHTML = '';
-    }
-    timerRunning();
-
-
-
-
-
-
-
-
-
-
-
-
+   
     
-    firstQuestion();
+  firstQuestion();
+  clearResults();
+  timerRunning();
 }
+//This is to clear my results once you restart the game (working on)
+function clearResults() {
+  document.getElementById("final-results").innerHTML = '';
+  }
+  
 
 
   //This function is suppose to start the first question and timer
   var firstQuestion = function() {
     timer = document.getElementById("time-left").innerText;
     timer.classList.remove("seconds-left");
-    startTimer = true;
+    
 
 
 
@@ -151,6 +142,7 @@ var startGame = document.getElementById("start").addEventListener("click" , star
     questionLeagueOptions = document.getElementById("question").innerText;
 
     var questionLeagueChoices = Object.values(choices)[currentQuestion];
+    checkGuess(questionLeagueChoices);
     
 
     //This is supposed to append a button per possible choice
@@ -160,7 +152,7 @@ var startGame = document.getElementById("start").addEventListener("click" , star
     })
 
     //This is hopefully the timer and final seconds and decrement
-    var timerRunning = function(){
+    function timerRunning(){
 
       if(timer > -1 && currentQuestion < Object.keys(questions).length){
 
@@ -188,15 +180,17 @@ var startGame = document.getElementById("start").addEventListener("click" , star
         var finalText = document.createTextNode("Good job, here are the results!" + "Correct:" + correctGuess + "Incorrect:" + incorrectGuess + "Unanswered:" + unanswered + "Play again?");
         finalPara.appendChild(finalText);
         var element = document.getElementById("final-results");
-        element.appendChild(finalPara);  
+        element.appendChild(finalPara);
+        hiddenGame();
+        theResults();  
 
       }
       //This Im trying to hide the game itself and keep the results.
-        var hiddenGame = function() {
+        function hiddenGame() {
         document.getElementById("trivia").style.display = "none";
       }
       //This Im trying to show the start button.
-      var showStart = function() {
+      function showStart() {
         document.getElementById("start").style.display = "block";
       }
       
@@ -205,7 +199,7 @@ var startGame = document.getElementById("start").addEventListener("click" , star
     //This function is to check to see if our guess is correct or not.
     function checkGuess() {
 
-      var IdResults = setTimeout(guessResult, 1000);
+      IdResults = setTimeout(guessResult, 1000);
       //This is our answers array
       var currentAnswer = Object.values(answers)[currentQuestion];
       //This is whenever you guess correctly on the function.
@@ -234,6 +228,8 @@ var startGame = document.getElementById("start").addEventListener("click" , star
     function theResults() {
 
       currentQuestion++;
+      document.getElementById()
+
     }
     
   
