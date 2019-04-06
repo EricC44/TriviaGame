@@ -2,7 +2,6 @@
 //This is to make sure the jQuery doesnt start early.
 $(document).ready(function(){
 
-
  
 //Global variables;
 
@@ -99,10 +98,12 @@ var answers = {
 
 
 
-}   
+} 
+
+document.getElementById("time-left").style.display = "none";
 //This is to listen for a mouse click with the Id "start"
-var startGame = document.getElementById("start").addEventListener("click" , startGame);
- function startButton() {
+  var startGame = document.getElementById("start").addEventListener("click" , startGame);
+  function startGame() {
     correctGuess = 0;
     incorrectGuess = 0;
     unanswered = 0;
@@ -111,19 +112,19 @@ var startGame = document.getElementById("start").addEventListener("click" , star
     startTimer = true;
    
     
-  firstQuestion();
-  clearResults();
-  timerRunning();
-}
+    firstQuestion();
+    clearResults();
+    timerRunning();
+  }
 //This is to clear my results once you restart the game (working on)
-function clearResults() {
+  function clearResults() {
   document.getElementById("final-results").innerHTML = '';
   }
   
 
 
   //This function is suppose to start the first question and timer
-  var firstQuestion = function() {
+  function firstQuestion() {
     timer = document.getElementById("time-left").innerText;
     timer.classList.remove("seconds-left");
     
@@ -152,56 +153,23 @@ function clearResults() {
     })
 
     //This is hopefully the timer and final seconds and decrement
-    function timerRunning(){
-
-      if(timer > -1 && currentQuestion < Object.keys(questions).length){
-
-        timer = document.getElementById("timer").innerText;
-        timer --;
-        if(timer === 10){
-          document.createElement("last-10-seconds")
-        }
-      }
-      //This is if you cannot think of an answer in time.
-      else if(timer === -1){
-        unanswered++;
-        var finalResult = false;
-        clearInterval(IdTimer);
-        resultId = setTimeout(guessResult , 1000);
-        document.getElementById("final-results").innerHTML;
-        alert("Incorrect, the correct answer was"+ Object.values(answers)[currentQuestion]);
-
-      }
-      //This is leading up to the final results and the data behind it.
-      else if(currentQuestion = Object.keys(questions).length) {
-
-        document.getElementById("final-results").innerText;
-        var finalPara = document.createElement("p");
-        var finalText = document.createTextNode("Good job, here are the results!" + "Correct:" + correctGuess + "Incorrect:" + incorrectGuess + "Unanswered:" + unanswered + "Play again?");
-        finalPara.appendChild(finalText);
-        var element = document.getElementById("final-results");
-        element.appendChild(finalPara);
-        hiddenGame();
-        theResults();  
-
-      }
-      //This Im trying to hide the game itself and keep the results.
-        function hiddenGame() {
-        document.getElementById("trivia").style.display = "none";
-      }
-      //This Im trying to show the start button.
-      function showStart() {
-        document.getElementById("start").style.display = "block";
-      }
-      
-
+    
+    //This Im trying to hide the game itself and keep the results.
+    function hiddenGame() {
+      document.getElementById("trivia").style.display = "none";
     }
+    //This Im trying to show the start button.
+    function showStart() {
+      document.getElementById("start").style.display = "block";
+    }
+    
     //This function is to check to see if our guess is correct or not.
     function checkGuess() {
 
       IdResults = setTimeout(guessResult, 1000);
       //This is our answers array
       var currentAnswer = Object.values(answers)[currentQuestion];
+      
       //This is whenever you guess correctly on the function.
       if(currentAnswer.text === correctGuess) {
         this.classList.add("btn-success");
@@ -213,7 +181,7 @@ function clearResults() {
         var A = document.createTextNode("Correct Guess!");
         R.appendChild(A);
 
-      } else{
+      } else {
 
         this.classList.add("btn-danger");
         this.classList.remove("btn-default");
@@ -228,7 +196,10 @@ function clearResults() {
     function theResults() {
 
       currentQuestion++;
-      document.getElementById()
+      document.getElementById("choices").style.display = "none";
+      document.getElementById("final-results").style.display = "none";
+
+      firstQuestion();
 
     }
     
@@ -239,6 +210,43 @@ function clearResults() {
 
 
 
+
+  }
+  //This is hopefully the timer and final seconds and decrement
+  function timerRunning() {
+
+    if(timer > -1 && currentQuestion < Object.keys(questions).length){
+
+      timer = document.getElementById("timer").innerText;
+      timer --;
+      if(timer === 10){
+        
+      }
+    }
+    //This is if you cannot think of an answer in time.
+    else if(timer === -1){
+      unanswered++;
+      var finalResult = false;
+      clearInterval(IdTimer);
+      resultId = setTimeout(guessResult , 1000);
+      document.getElementById("final-results").innerHTML;
+      alert("Incorrect, the correct answer was"+ Object.values(answers)[currentQuestion]);
+
+    }
+    //This is leading up to the final results and the data behind it.
+    else if(currentQuestion = Object.keys(questions).length) {
+
+      document.getElementById("final-results").innerText;
+      var finalPara = document.createElement("p");
+      var finalText = document.createTextNode("Good job, here are the results!" + "Correct:" + correctGuess + "Incorrect:" + incorrectGuess + "Unanswered:" + unanswered + "Play again?");
+      finalPara.appendChild(finalText);
+      var element = document.getElementById("final-results");
+      element.appendChild(finalPara);
+      hiddenGame();
+      theResults();  
+
+    }
+    
 
   }
 
