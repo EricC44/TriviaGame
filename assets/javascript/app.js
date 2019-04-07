@@ -167,12 +167,17 @@ var answers = {
     checkGuess(questionLeagueChoices);
     
 
+    
+    
     //This is supposed to append a button per possible choice
+    
+    
     $.each(questionLeagueChoices, function(index, key){
       $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
       console.log(questionLeagueChoices);
       
     })
+    
 
   }
   //This is hopefully the timer and final seconds and decrement
@@ -181,6 +186,7 @@ var answers = {
     if(timer > -1 && currentQuestion < Object.keys(questions).length){
 
       timer = document.getElementById("timer").innerText;
+     
       timer --;
       if(timer === 10){
         
