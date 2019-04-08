@@ -160,7 +160,7 @@ var answers = {
     //This is hopefully putting the questions into the HTML as well as keeping to the question.
     var questionLeagueOptions;
      questionLeagueOptions = Object.values(questions)[currentQuestion];
-    questionLeagueOptions = document.getElementById("question").innerHTML;
+    questionLeagueOptions = document.getElementById("choices").innerHTML;
     
 
     var questionLeagueChoices = Object.values(choices)[currentQuestion];
@@ -172,11 +172,12 @@ var answers = {
     //This is supposed to append a button per possible choice
     
     
-    $.each(questionLeagueChoices, function(index, key){
-      $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
-      console.log(questionLeagueChoices);
+    //$.each(questionLeagueChoices, function(index , key){
+      //$('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
+      //console.log(questionLeagueChoices);
+      //console.log(index);
       
-    })
+    //})
     
 
   }
