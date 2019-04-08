@@ -121,7 +121,7 @@ var answers = {
     }
 
     displayTrivia();
-    timer = document.getElementById("timer").innerText;
+    document.getElementById("timer").innerText = timer;
     hideStart();
     document.getElementById("time-left").style.display = "block";
     firstQuestion();
