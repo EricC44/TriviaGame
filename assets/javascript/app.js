@@ -14,9 +14,10 @@ var correctGuess = 0;
 var incorrectGuess = 0;
 var unanswered = 0;
 var currentQuestion = 0;
-var timer = 30;
+var timer =  30;
 var startTimer = true;
 var IdTimer = "";
+
 
 
 //This is the Questions array
@@ -152,19 +153,20 @@ var answers = {
 
 
 
-    //This is just to make sure that the 
+    //This is just to make sure that the timer doesnt speed up
     if(!startTimer) {
         timer = setInterval(count , 1000);
         
     }
     //This is hopefully putting the questions into the HTML as well as keeping to the question.
-    var questionLeagueOptions;
-     questionLeagueOptions = Object.values(questions)[currentQuestion];
+    var questionLeagueOptions = Object.values(questions)[currentQuestion];
     questionLeagueOptions = document.getElementById("choices").innerHTML;
+    console.log(questionLeagueOptions);
     
 
     var questionLeagueChoices = Object.values(choices)[currentQuestion];
-    checkGuess(questionLeagueChoices);
+    console.log(questionLeagueChoices);
+    checkGuess();
     
 
     
@@ -172,12 +174,12 @@ var answers = {
     //This is supposed to append a button per possible choice
     
     
-    //$.each(questionLeagueChoices, function(index , key){
-      //$('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
-      //console.log(questionLeagueChoices);
-      //console.log(index);
+    $.each(questionLeagueChoices, function(index , key){
+      $('#choices').append($('<button class="option btn btn-default btn-lg">'+key+'</button>'));
+      console.log(questionLeagueChoices);
+      console.log(index);
       
-    //})
+  })
     
 
   }
@@ -196,7 +198,7 @@ var answers = {
     //This is if you cannot think of an answer in time.
     else if(timer === -1){
       unanswered++;
-      var finalResult = false;
+      
       clearInterval(IdTimer);
       resultId = setTimeout(theResults() , 1000);
       document.getElementById("final-results").innerHTML;
@@ -268,7 +270,14 @@ var answers = {
 
   }
 
-
+  function printBtn() {
+    for (var i = 0; i < choices.length; i++) {
+       var btn = document.createElement("button");
+       var t = document.createTextNode(choices[i]);
+       btn.appendChild(t);
+       document.body.appendChild(btn);
+        }
+    }
 
 
 
