@@ -162,12 +162,13 @@ var questions =[{
       
   // })
       currentQuestion = 0;
-      document.getElementById("questionId").innerHTML="<h2>" +questions[0].question +"</h2>";
-      for(var i=0; i<questions[currentQuestion].answers.length; i++){
-        document.getElementById("choices").innerHTML = "<button class='answer-button' id='button' data-name='" + questions[currentQuestion].answers[i]
-        + "'>" + questions[currentQuestion].answers[i] + "</button>";
+      document.getElementById("questionId").innerHTML="<h2>" + questions[0].question + "</h2>";
+      for(var i=0; i< questions[currentQuestion].answers.length; i++){
+        document.getElementById("choices").innerHTML = "<button class='answer-button' id='button' data-name=''" + questions[currentQuestion].answers[i]
+        + ">" + questions[currentQuestion].answers[i] + "</button>";
+        console.log(questions[i].answers);
       }
-      console.log(questions);
+      //console.log();
       
     
 
