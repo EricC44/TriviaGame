@@ -1,7 +1,6 @@
 // This is to listen for a mouse click with the Id "start"
 var start = document.getElementById('start').addEventListener('click', trivia.startGame)
-
-  
+var timeLeft = document.getElementById('time-left').style.display = 'none'
 
 var trivia = {
   // Trivia's properties used for the code
@@ -71,55 +70,66 @@ var trivia = {
   // trivia methods required to start game
   // start game
   startGame: function() {
-      //reset game values to 0 after begining of game
-      trivia.correct = 0,
-      trivia.incorrect = 0,
-      
+    //reset game values to 0 after begining of game
+    trivia.correct = 0,
+    trivia.incorrect = 0,
+    trivia.unanswered = 0,
+    clearInterval(trivia.timerId),
 
+    document.getElementById('trivia').style.visibility = 'visible',
+
+    document.getElementById('timer').innerText,
+
+    document.getElementById('start').style.display = 'none',
+
+    document.getElementById('time-left').style.display = 'block',
+
+    trivia.firstQuestion();
+
+  },
+  firstQuestion: function() {
+
+    trivia.timer = 10,
+
+    document.getElementById('timer').innerText(trivia.timer),
   }
-
 
 }
 
-  
+// function startGame () {
+//   hideStart()
+//   // correctGuess = 0
+//   // incorrectGuess = 0
+//   // unanswered = 0
+//   currentQuestion = 0
+//   clearInterval(IdTimer)
+//   startTimer = true
+//   // if(startTimer = true) {
+//   // timerRunning();
+//   // }
+//   // timerRunning();
 
-  function startGame () {
-    hideStart()
-    // correctGuess = 0
-    // incorrectGuess = 0
-    // unanswered = 0
-    currentQuestion = 0
-    clearInterval(IdTimer)
-    startTimer = true
-    // if(startTimer = true) {
-    // timerRunning();
-    // }
-    // timerRunning();
+//   // displayTrivia();
+//   document.getElementById('timer').innerText = timer
 
-    // displayTrivia();
-    document.getElementById('timer').innerText = timer
+//   document.getElementById('time-left').style.display = 'block'
+//   firstQuestion()
+//   // clearResults();
+//   // timerRunning();
+// }
 
-    document.getElementById('time-left').style.display = 'block'
-    firstQuestion()
-    // clearResults();
-    // timerRunning();
-  }
+// // function hideStart () {
+// //   document.getElementById('start').style.display = 'none'
+// // }
 
-  // function hideStart () {
-  //   document.getElementById('start').style.display = 'none'
-  // }
-  
-
-  // // This function is suppose to start the first question and timer
-  // function firstQuestion () {
-  //   currentQuestion = 0
-  //   document.getElementById('questionId').innerHTML = '<h2>' + questions[0].question + '</h2>'
-  //   for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
-  //     document.getElementById('choices').innerHTML = "<button class='answer-button ml-3 mr-3' id='button' data-name=''" + questions[currentQuestion].answers[i] +
-  //       '>' + questions[currentQuestion].answers[i] + '</button>'
-  //     console.log(questions[questions.answers.length])
-  //   }
-  //   // console.log();
-  // }
- 
-
+// // // This function is suppose to start the first question and timer
+// // function firstQuestion () {
+// //   currentQuestion = 0
+// //   document.getElementById('questionId').innerHTML = '<h2>' + questions[0].question + '</h2>'
+// //   for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
+// //     document.getElementById('choices').innerHTML = "<button class='answer-button ml-3 mr-3' id='button' data-name=''" + questions[currentQuestion].answers[i] +
+// //       '>' + questions[currentQuestion].answers[i] + '</button>'
+// //     console.log(questions[questions.answers.length])
+// //   }
+// //   // console.log();
+// // }
