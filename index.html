@@ -19,29 +19,26 @@
             <div class="container">
                 <div id="trivia">
                     <h2>League of Legends Trivia</h2>
-                        <p id="time-left" class="lead">Time Left: <span id= "timer"></span></p>
-                        <p id="choices" class="lead">
-                        <div id='questionId'></div>
-                
-                        </p>
+                        <div id="time-left" class="lead">Time Left: <span id= "timer"></span></div>
+                        <div id="currentQuestion"></div>
+                        <div id="choices" class="lead"></div>
                         <button id="start" class="btn btn-primary btn-large">Start Game</button>
-                        
+                        <button id="newGame" class="btn btn-success btn-large">Play Again?</button>
                 </div>
-                <div id="final-results"></div>
+                
             </div>
         </div>
-
-        <div class="row">
-            <div id="options" class="text-center"></div>
-                <div id="choices"></div>
+        <br><br>
+        <div class="row text-center">
+            <div class="col-md-12">
+                <p id="scoreboard-txt">Scoreboard:</p>
+                <div class="text-center">Correct: <span id="correct"></span></div>
+                <div class="text-center">Incorrect: <span id="incorrect"></span></div>
+                <div class="text-center">Unanswered: <span id="unanswered"></span></div>
+                <button id="newGame">Play Again?</button>
+                
+                
             </div>
-
-            
-
-
-
-
-
         </div>
 
     
