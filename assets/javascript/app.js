@@ -1,104 +1,66 @@
-// Trivia's global properties
-var correct = 0
-var incorrect = 0
-var unanswered = 0
-var sets = 0
-var currentQuestion = 0
-var timer = 20
-var timerIsOn = false
-var timerId = ''
-
 // Questions with their choices and answer keys
-var questions =  [{
-  q1: 'Which champion is NOT Demacian?',
-  q2: 'Which champion is consumed with vengeance against Thresh for holding his wifes soul?',
-  q3: 'What item clears almost all forms of crowd control?',
-  q4: 'Which summoner spell is the most commonly used in League of Legends games?',
-  q5: 'When does rift hearld despawn on the map?',
-  q6: 'What elemental drake regenerates health over time?',
-  q7: 'How many towers does each team have in each summoners rift game?',
-  q8: "What champion does NOT have an official solo in the League of Legends music video 'Popstars' by KD/A",
-  q9: "Which champion is also known as 'The Eternal Nightmare'?",
-  q10: 'Which NBA team does NOT own a professional League of Legends team?',
-  q11: 'Which single item is the most expensive in the game?',
+var trivia = [{
+  question: 'Which champion is NOT Demacian?',
+  choices: ['Garen', 'Fiora', 'Katarina', 'Lux'],
+  answer: 2
+}, {
+  question: 'Which champion is consumed with vengeance against Thresh for holding his wifes soul?',
+  choices: ['Lucian', 'Rakan', 'Shen', 'Swain'],
+  answer: 0
+}, {
+  question: 'What item clears almost all forms of crowd control?',
+  choices: ['Statikk Shiv', 'Quicksilver Sash', 'Adaptive Helm', 'Phantom Dancer'],
+  answer: 1
+}, {
+  question: 'Which summoner spell is the most commonly used in League of Legends games?',
+  choices: ['Ghost', 'Teleport', 'Flash', 'Ignite'],
+  answer: 2
+}, {
+  question: 'When does rift hearld despawn on the map?',
+  choices: ['14:55', '19:55', '24:55', '29:55'],
+  answer: 1
+}, {
+  question: 'What elemental drake regenerates health over time?',
+  choices: ['Mountain', 'Infernal', 'Wind', 'Ocean'],
+  answer: 3
+
+}, {
+  question: 'How many towers does each team have in each summoners rift game?',
+  choices: ['8', '11', '13', '15'],
+  answer: 1
+}, {
+  question: "What champion does NOT have an official solo in the League of Legends music video 'Popstars' by KD/A",
+  choices: ["Kai'sa", 'Ahri', 'Akali', 'Evelyyn'],
+  answer: 0
+}, {
+  question: "Which champion is also known as 'The Eternal Nightmare'?",
+  choices: ['Zed', 'Karthus', 'Diana', 'Nocturne'],
+  answer: 3
+}, {
+  question: 'Which NBA team does NOT own a professional League of Legends team?',
+  choices: ['Houston Rockets', 'Golden State Warriors', 'Los Angeles Lakers', 'Cleveland Caveliers'],
+  answer: 2
+}, {
+  q11: 'What is the most expensive item part in the game?',
+  choices: ['Serrated Dirk', 'Needlessly Large Rod', 'Boots of Speed', 'Ruby Crystal'],
+  answer: 1
+}, {
   q12: 'How many dragons can you have before Elder Dragon spawns?',
+  choices: ['4', '5', '6', '7'],
+  answer: 2
+}, {
   q13: 'As of April 2nd 2019, which champion is considered newest? (excluding reworks)',
+  choices: ['Sylas', 'Zoe', 'Neeko', "Kai'sa"],
+  answer: 0
+}, {
   q14: 'Which champions ult is called Shurima Shuffle?',
-  q15: 'Who is Riot Games beloved Yordle and mascot?'
-
+  choices: ['Ziggs', 'Jayce', 'Vi', 'Azir'],
+  answer: 3
+}, {
+  q15: 'Who is Riot Games beloved Yordle and mascot?',
+  choices: ['Poppy', 'Teemo', 'Yasuo', 'Jinx'],
+  answer: 1
 }]
-var choices = [{
-  q1: ['Garen', 'Fiora', 'Katarina', 'Lux'],
-  q2: ['Lucian', 'Rakan', 'Shen', 'Swain'],
-  q3: ['Statikk Shiv', 'Quicksilver Sash', 'Adaptive Helm', 'Phantom Dancer'],
-  q4: ['Ghost', 'Teleport', 'Flash', 'Ignite'],
-  q5: ['14:55', '19:55', '24:55', '29:55'],
-  q6: ['Mountain', 'Infernal', 'Wind', 'Ocean'],
-  q7: ['8', '11', '13', '15'],
-  q8: ["Kai'sa", 'Ahri', 'Akali', 'Evelyyn'],
-  q9: ['Zed', 'Karthus', 'Diana', 'Nocturne'],
-  q10: ['Houston Rockets', 'Golden State Warriors', 'Los Angeles Lakers', 'Cleveland Caveliers'],
-  q11: ['Serrated Dirk', 'Needlessly Large Rod', 'Boots of Speed', 'Ruby Crystal'],
-  q12: ['4', '5', '6', '7'],
-  q13: ['Sylas', 'Zoe', 'Neeko', "Kai'sa"],
-  q14: ['Ziggs', 'Jayce', 'Vi', 'Azir'],
-  q15: ['Ashe', 'Teemo', 'Yasuo', 'Jinx'],
-}]
-var answers = [{
-  q1: 'Katarina',
-  q2: 'Lucian',
-  q3: 'Quicksilver Sash',
-  q4: 'Flash',
-  q5: '19:55',
-  q6: 'Ocean',
-  q7: '11',
-  q8: "Kai'sa",
-  q9: 'Nocturne',
-  q10: 'Los Angeles Lakers',
-  q11: 'Needlessly Large Rod',
-  q12: '6',
-  q13: 'Sylas',
-  q14: 'Azir',
-  q15: 'Teemo'
-}]
-
-
-
-// trivia methods required to start game
-// start game
-function startGame () {
-  // reset game values to 0 after begining of game
-  correct = 0
-  incorrect = 0
-  unanswered = 0
-  clearInterval(timerId)
-
-  document.getElementById('trivia').style.visibility = 'visible'
-
-  document.getElementById('timer').innerText
-
-  document.getElementById('start').style.display = 'none'
-
-  document.getElementById('time-left').style.display = 'block'
-
-  nextQuestion()
-
-}
-function nextQuestion () {
-
-  timer = 10
-
-  document.getElementById('timer').innerText(timer)
-
-  if (!timerIsOn) {
-    timerId = setInterval(timerRunning, 1000)
-  }
-  var questionCon = Object.values(questions)[currentQuestion];
-    
-}
-
-
-
 // function startGame () {
 //   hideStart()
 //   // correctGuess = 0
