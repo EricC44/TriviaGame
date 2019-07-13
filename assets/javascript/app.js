@@ -41,26 +41,33 @@ var trivia = [{
   choices: ['Houston Rockets', 'Golden State Warriors', 'Los Angeles Lakers', 'Cleveland Caveliers'],
   answer: 2
 }, {
-  q11: 'What is the most expensive item part in the game?',
+  question: 'What is the most expensive item part in the game?',
   choices: ['Serrated Dirk', 'Needlessly Large Rod', 'Boots of Speed', 'Ruby Crystal'],
   answer: 1
 }, {
-  q12: 'How many dragons can you have before Elder Dragon spawns?',
+  question: 'How many dragons can you have before Elder Dragon spawns?',
   choices: ['4', '5', '6', '7'],
   answer: 2
 }, {
-  q13: 'As of April 2nd 2019, which champion is considered newest? (excluding reworks)',
+  question: 'As of April 2nd 2019, which champion is considered newest? (excluding reworks)',
   choices: ['Sylas', 'Zoe', 'Neeko', "Kai'sa"],
   answer: 0
 }, {
-  q14: 'Which champions ult is called Shurima Shuffle?',
+  question: 'Which champions ult is called Shurima Shuffle?',
   choices: ['Ziggs', 'Jayce', 'Vi', 'Azir'],
   answer: 3
 }, {
-  q15: 'Who is Riot Games beloved Yordle and mascot?',
+  question: 'Who is Riot Games beloved Yordle and mascot?',
   choices: ['Poppy', 'Teemo', 'Yasuo', 'Jinx'],
   answer: 1
 }]
+
+document.getElementById('start').addEventListener('click', startGame)
+
+function startGame () {
+  document.getElementById('start').style.display = 'none'
+  document.getElementById('newGame').style.display = 'none'
+}
 // function startGame () {
 //   hideStart()
 //   // correctGuess = 0
