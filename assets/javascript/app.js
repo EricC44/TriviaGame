@@ -45,7 +45,7 @@ var trivia = [{
   choices: ['Serrated Dirk', 'Needlessly Large Rod', 'Boots of Speed', 'Ruby Crystal'],
   answer: 1
 }, {
-  question: 'How many dragons can you have before Elder Dragon spawns?',
+  question: 'How many dragons can you defeat before Elder Dragon spawns?',
   choices: ['4', '5', '6', '7'],
   answer: 2
 }, {
@@ -62,11 +62,27 @@ var trivia = [{
   answer: 1
 }]
 
+var questionIndex = 0
+document.getElementById('newGame').style.display = 'none'
+
 document.getElementById('start').addEventListener('click', startGame)
 
 function startGame () {
   document.getElementById('start').style.display = 'none'
-  document.getElementById('newGame').style.display = 'none'
+  questionIndex = 0
+  correct = 0
+  incorrect = 0
+ 
+  
+  nextQuestion()
+}
+function nextQuestion() {
+  for(var i = 0; i < trivia.length; i++) {
+    document.getElementById('currentQuestion').innerHTML = trivia[i].question
+    console.log(trivia[i].question)
+     
+    // console.log(trivia[i])
+  } 
 }
 // function startGame () {
 //   hideStart()
