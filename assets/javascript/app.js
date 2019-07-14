@@ -63,68 +63,34 @@ var trivia = [{
 }]
 
 var questionIndex = 0
+// Making sure that our new game button does not appear at the start of the page
 document.getElementById('newGame').style.display = 'none'
-
+// This listens for the click of my start button to start the game
 document.getElementById('start').addEventListener('click', startGame)
-
+// This function starts the game
 function startGame () {
+  // This hides the start button once clicked
   document.getElementById('start').style.display = 'none'
   questionIndex = 0
   correct = 0
   incorrect = 0
- 
   nextQuestion()
 }
+// This is the function to display the question and the choices to the question
 function nextQuestion() {
-  for(var i = 0; i < trivia.length; i++) {
-    document.getElementById('currentQuestion').innerHTML = trivia[i].question
-    buttons()
-    // document.getElementById('choices').innerHTML = trivia[i].choices
-    
-   
-  } 
-}
+  // This for loop loops through all of the trivia object, this also has our questions appear on the html page
+  for (var i = 0; i < trivia.length; i++) {
+    document.getElementById('currentQuestion').innerHTML = trivia[0].question
+    // This for loop loops through all of my choices in the array and appends buttons to the page
+    for (var j = 0; j < trivia[questionIndex].choices.length; j++) {
+      document.getElementById('choices').innerHTML += `<button class=jsButtons btn btn-danger> ${trivia[questionIndex].choices[j]}</button>`
+      console.log(trivia[questionIndex].choices)
+    }
 
-function buttons() {
-  for(var i = 0; i < trivia[0].choices.length; i++) {
-  document.getElementById('choices').innerHTML += `<button class=btn btn-primary> ${trivia[0].choices[i]}</button>`
-  console.log(trivia[i].choices.length)
+    // document.getElementsByClassName('jsButtons').addEventListener('click', checkAnswer)
   }
 }
-// function startGame () {
-//   hideStart()
-//   // correctGuess = 0
-//   // incorrectGuess = 0
-//   // unanswered = 0
-//   currentQuestion = 0
-//   clearInterval(IdTimer)
-//   startTimer = true
-//   // if(startTimer = true) {
-//   // timerRunning();
-//   // }
-//   // timerRunning();
 
-//   // displayTrivia();
-//   document.getElementById('timer').innerText = timer
-
-//   document.getElementById('time-left').style.display = 'block'
-//   firstQuestion()
-//   // clearResults();
-//   // timerRunning();
+// function checkAnswer() {
+//   if(trivia[questionIndex].answer === )
 // }
-
-// // function hideStart () {
-// //   document.getElementById('start').style.display = 'none'
-// // }
-
-// // // This function is suppose to start the first question and timer
-// // function firstQuestion () {
-// //   currentQuestion = 0
-// //   document.getElementById('questionId').innerHTML = '<h2>' + questions[0].question + '</h2>'
-// //   for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
-// //     document.getElementById('choices').innerHTML = "<button class='answer-button ml-3 mr-3' id='button' data-name=''" + questions[currentQuestion].answers[i] +
-// //       '>' + questions[currentQuestion].answers[i] + '</button>'
-// //     console.log(questions[questions.answers.length])
-// //   }
-// //   // console.log();
-// // }
