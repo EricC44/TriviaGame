@@ -73,16 +73,23 @@ function startGame () {
   correct = 0
   incorrect = 0
  
-  
   nextQuestion()
 }
 function nextQuestion() {
   for(var i = 0; i < trivia.length; i++) {
     document.getElementById('currentQuestion').innerHTML = trivia[i].question
-    console.log(trivia[i].question)
-     
-    // console.log(trivia[i])
+    buttons()
+    // document.getElementById('choices').innerHTML = trivia[i].choices
+    
+   
   } 
+}
+
+function buttons() {
+  for(var i = 0; i < trivia[0].choices.length; i++) {
+  document.getElementById('choices').innerHTML += `<button class=btn btn-primary> ${trivia[0].choices[i]}</button>`
+  console.log(trivia[i].choices.length)
+  }
 }
 // function startGame () {
 //   hideStart()
