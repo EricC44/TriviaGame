@@ -2,7 +2,7 @@
 var trivia = [{
   question: 'Which champion is NOT Demacian?',
   choices: ['Garen', 'Fiora', 'Katarina', 'Lux'],
-  answer: 2
+  answer: 'Katarina'
 }, {
   question: 'Which champion is consumed with vengeance against Thresh for holding his wifes soul?',
   choices: ['Lucian', 'Rakan', 'Shen', 'Swain'],
@@ -61,7 +61,8 @@ var trivia = [{
   choices: ['Poppy', 'Teemo', 'Yasuo', 'Jinx'],
   answer: 1
 }]
-
+var correct = 0
+var incorrect = 0
 var questionIndex = 0
 // Making sure that our new game button does not appear at the start of the page
 document.getElementById('newGame').style.display = 'none'
@@ -77,20 +78,28 @@ function startGame () {
   nextQuestion()
 }
 // This is the function to display the question and the choices to the question
-function nextQuestion() {
+function nextQuestion () {
   // This for loop loops through all of the trivia object, this also has our questions appear on the html page
   for (var i = 0; i < trivia.length; i++) {
-    document.getElementById('currentQuestion').innerHTML = trivia[0].question
+    document.getElementById('currentQuestion').innerHTML = trivia[questionIndex].question
     // This for loop loops through all of my choices in the array and appends buttons to the page
     for (var j = 0; j < trivia[questionIndex].choices.length; j++) {
-      document.getElementById('choices').innerHTML += `<button class=jsButtons btn btn-danger> ${trivia[questionIndex].choices[j]}</button>`
-      console.log(trivia[questionIndex].choices)
+      document.getElementById('choices').innerHTML += `<button id=jsButtons> ${trivia[questionIndex].choices[j]}</button>`
+      console.log(trivia[questionIndex].choices[j])
     }
-
-    // document.getElementsByClassName('jsButtons').addEventListener('click', checkAnswer)
+    
+    document.getElementById('jsButtons').addEventListener('click', checkAnswer)
   }
 }
 
-// function checkAnswer() {
-//   if(trivia[questionIndex].answer === )
-// }
+function checkAnswer() {
+  if(trivia[questionIndex].choices === trivia[questionIndex].answer) {
+    correct++
+    document.getElementById('message').innerHTML = 'That is the correct answer! Good Job!'
+    questionIndex++
+  } else {
+    incorrect++
+    document.getElementById('message').innerHTML = `I\'m sorry, that is the incorrect answer, the correct answer is ${trivia[questionIndex].answer}`
+    questionIndex++
+  }
+}
