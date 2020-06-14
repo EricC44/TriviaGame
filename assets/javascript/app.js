@@ -2,7 +2,7 @@
 var trivia = [{
   question: 'Which champion is NOT Demacian?',
   choices: ['Garen', 'Fiora', 'Katarina', 'Lux'],
-  answer: 'Katarina'
+  answer: 2
 }, {
   question: 'Which champion is consumed with vengeance against Thresh for holding his wifes soul?',
   choices: ['Lucian', 'Rakan', 'Shen', 'Swain'],
@@ -59,7 +59,7 @@ var trivia = [{
 }, {
   question: 'Who is Riot Games beloved Yordle and mascot?',
   choices: ['Poppy', 'Teemo', 'Yasuo', 'Jinx'],
-  answer: 1
+  answer: 'Teemo'
 }]
 var correct = 0
 var incorrect = 0
@@ -81,14 +81,28 @@ function startGame () {
 function nextQuestion () {
   // This for loop loops through all of the trivia object, this also has our questions appear on the html page
   for (var i = 0; i < trivia.length; i++) {
+    // This will iterate through each question in the index
     document.getElementById('currentQuestion').innerHTML = trivia[questionIndex].question
-    // This for loop loops through all of my choices in the array and appends buttons to the page
-    for (var j = 0; j < trivia[questionIndex].choices.length; j++) {
-      document.getElementById('choices').innerHTML += `<button id=jsButtons> ${trivia[questionIndex].choices[j]}</button>`
-      console.log(trivia[questionIndex].choices[j])
-    }
     
-    document.getElementById('jsButtons').addEventListener('click', checkAnswer)
+  }
+  // This for loop goes through the iteration of each choice
+  for (var j = 0; j < trivia[questionIndex].choices.length; j++) {
+    // Creates a new bootstrap button element
+    var buttons = document.createElement('button')
+    // Puts the choices into the innerHTML button element
+    buttons.innerHTML = trivia[questionIndex].choices[j]
+    // Creates a bootstrap button classname
+    buttons.className = 'btn btn-outline-primary'
+    // This sets a variable to the HTML div 'choices'
+    var buttonDiv = document.getElementById('choices')
+    // appends the buttons to the html
+    buttonDiv.appendChild(buttons)
+    // This adds an event listener to the buttons we created
+    buttonDiv.addEventListener('click', checkAnswer)
+    // document.getElementById('choices').innerHTML += `<button id=jsButtons> ${trivia[questionIndex].choices[j]}</button>`
+
+    console.log(trivia[questionIndex].choices[j])
+    
   }
 }
 
@@ -97,9 +111,25 @@ function checkAnswer() {
     correct++
     document.getElementById('message').innerHTML = 'That is the correct answer! Good Job!'
     questionIndex++
+    nextQuestion()
+    
   } else {
     incorrect++
     document.getElementById('message').innerHTML = `I\'m sorry, that is the incorrect answer, the correct answer is ${trivia[questionIndex].answer}`
     questionIndex++
+    document.getElementById('choices').innerHTML = ''
+    nextQuestion()
+    
   }
 }
+//  function correct() {
+//   correct++
+//   document.getElementById('message').innerHTML = 'That is the correct answer! Good Job!'
+//   questionIndex++
+// };
+
+//  function incorrect() {
+//   incorrect++
+//   document.getElementById('message').innerHTML = `I\'m sorry, that is the incorrect answer, the correct answer is ${trivia[questionIndex].answer}`
+//   questionIndex++
+// }
